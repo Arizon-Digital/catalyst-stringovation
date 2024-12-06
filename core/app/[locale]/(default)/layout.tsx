@@ -15,6 +15,7 @@ export default function DefaultLayout({ children, params: { locale } }: Props) {
 
   return (
     <>
+    <script type="text/javascript" src="https://static.affiliatly.com/bigcommerce/v3/bigcommerce.js?affiliatly_code=AF-1070207"></script>
       <Suspense fallback={<HeaderSkeleton />}>
         <Header cart={<Cart />} />
       </Suspense>

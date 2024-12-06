@@ -97,6 +97,16 @@ export default async function Product({ params: { locale, slug }, searchParams }
         <Gallery product={product} />
         <Details product={product} />
         <div className="lg:col-span-2">
+        {/* <iframe
+                id="player"                
+                width="640"
+                height="390"                
+                webkitAllowFullScreen
+                mozallowfullscreen
+                allowFullScreen
+                data-src="//www.youtube.com/embed/{{this.featured.id}}?rel=0"
+                data-video-player>
+            </iframe> */}
           <Description product={product} />
           <Warranty product={product} />
           <Suspense fallback={t('loading')}>
