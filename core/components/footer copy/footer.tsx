@@ -54,14 +54,14 @@ export const Footer = async () => {
       })),
     },
     {
-      title: 'Members',
+      title: 'Brands',
       links: removeEdgesAndNodes(data.brands).map((brand) => ({
         label: brand.name,
         href: brand.path,
       })),
     },
     {
-      title: 'Contact',
+      title: 'Navigate',
       links: removeEdgesAndNodes(data.content.pages).map((page) => ({
         label: page.name,
         href: page.__typename === 'ExternalLinkPage' ? page.link : page.path,

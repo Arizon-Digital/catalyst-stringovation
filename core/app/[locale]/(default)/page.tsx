@@ -8,6 +8,7 @@ import { revalidate } from '~/client/revalidate-target';
 import { ProductCardCarousel } from '~/components/product-card-carousel';
 import { ProductCardCarouselFragment } from '~/components/product-card-carousel/fragment';
 import { Slideshow } from '~/components/slideshow';
+import { About } from '~/components/about/about';
 import { LocaleType } from '~/i18n/routing';
 
 const HomePageQuery = graphql(
@@ -58,7 +59,7 @@ export default async function Home({ params: { locale } }: Props) {
   return (
     <>
       <Slideshow />
-
+      <About />
       <div className="my-10">
         <ProductCardCarousel
           products={featuredProducts}
@@ -73,6 +74,7 @@ export default async function Home({ params: { locale } }: Props) {
           title={t('Carousel.newestProducts')}
         />
       </div>
+      
     </>
   );
 }
