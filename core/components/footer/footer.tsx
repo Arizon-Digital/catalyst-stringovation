@@ -53,21 +53,66 @@ export const Footer = async () => {
         href: category.path,
       })),
     },
+    // {
+    //   title: 'Brands',
+    //   links: removeEdgesAndNodes(data.brands).map((brand) => ({
+    //     label: brand.name,
+    //     href: brand.path,
+    //   })),
+    // },
+    // {
+    //   title: 'Navigate',
+    //   links: removeEdgesAndNodes(data.content.pages).map((page) => ({
+    //     label: page.name,
+    //     href: page.__typename === 'ExternalLinkPage' ? page.link : page.path,
+    //   })),
+    // },
     {
-      title: 'Brands',
-      links: removeEdgesAndNodes(data.brands).map((brand) => ({
-        label: brand.name,
-        href: brand.path,
-      })),
+      title: 'Members',
+      links: [{
+        label: "Login",
+        href: "/login",
+      },
+      {
+        label: "Become a Member",
+        href: "/register",
+      }],
     },
     {
-      title: 'Navigate',
-      links: removeEdgesAndNodes(data.content.pages).map((page) => ({
-        label: page.name,
-        href: page.__typename === 'ExternalLinkPage' ? page.link : page.path,
-      })),
+      title: 'Contact',
+      links: [{
+        label: "info@stringovation.com",
+        href: "/login",
+      },
+      {
+        label: "0000 000 0000",
+        href: "/register",
+      }],
     },
-  ];
+    {
+      title: 'Copyright by StringOvation 2024',
+      links:[{
+        label:"All Rights Reserved",
+        href: "/rights"
+      },
+      {
+        label: "Privacy Policy",
+        href: "/privacy",
+      },
+      {
+        label: "Terms of Use",
+        href: "/terms"
+      },
+      {
+        label: "Accessibility",
+        href: "/accessibility"
+      },
+      {
+        label: "Site Map",
+        href: "/site"
+      }
+    ]
+    }];
 
   return (
     <ComponentsFooter
@@ -78,14 +123,14 @@ export const Footer = async () => {
           : undefined
       }
       logo={data.settings ? logoTransformer(data.settings) : undefined}
-      paymentIcons={[
-        <AmazonIcon key="amazon" />,
-        <AmericanExpressIcon key="americanExpress" />,
-        <ApplePayIcon key="apple" />,
-        <MastercardIcon key="mastercard" />,
-        <PayPalIcon key="paypal" />,
-        <VisaIcon key="visa" />,
-      ]}
+      // paymentIcons={[
+      //   <AmazonIcon key="amazon" />,
+      //   <AmericanExpressIcon key="americanExpress" />,
+      //   <ApplePayIcon key="apple" />,
+      //   <MastercardIcon key="mastercard" />,
+      //   <PayPalIcon key="paypal" />,
+      //   <VisaIcon key="visa" />,
+      // ]}
       sections={sections}
       socialMediaLinks={data.settings?.socialMediaLinks
         .filter((socialMediaLink) => Boolean(socialIcons[socialMediaLink.name]))

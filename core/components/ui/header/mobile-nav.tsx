@@ -72,7 +72,7 @@ export const MobileNav = ({ links, logo }: Props) => {
               {links.map((link) =>
                 link.groups && link.groups.length > 0 ? (
                   <NavigationMenuPrimitive.Item key={link.href}>
-                    <NavigationMenuPrimitive.Trigger className="group/button flex w-full items-center justify-between p-3 ps-0 font-semibold hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20">
+                    <NavigationMenuPrimitive.Trigger className="group/button flex w-full items-center justify-between p-3 ps-0 font-semibold :ring-4 focus-visible:ring-primary/20">
                       <CustomLink
                         className="font-semibold"
                         href={link.href}
