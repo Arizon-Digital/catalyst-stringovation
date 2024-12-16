@@ -122,7 +122,7 @@ const Footer = ({
     <section className="flex flex-col gap-10 border-t border-gray-200 px-4 py-8 sm:gap-8 sm:px-10 sm:py-6 lg:hidden lg:px-12 2xl:px-0">
       <Locale />
 
-      <div className="flex w-full flex-col justify-between gap-10 sm:flex-row sm:gap-8">
+      <div className="flex w-full flex-col justify-between sm:flex-row sm:gap-8">
         <div className="flex gap-6">{paymentIcons}</div>
         <p className="text-gray-500 sm:order-first">{copyright}</p>
       </div>
