@@ -86,14 +86,14 @@ const Footer = ({
         )}
         {Boolean(contactInformation) && (
           <>
-            <address className="not-italic">
+            {/* <address className="not-italic">
               {contactInformation?.address?.split('\n').map((line) => (
                 <Fragment key={line}>
                   {line}
                   <br />
                 </Fragment>
               ))}
-            </address>
+            </address> */}
             {Boolean(contactInformation?.phone) && (
               <a
                 className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
