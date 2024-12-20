@@ -54,7 +54,7 @@ export default async function Home({ params: { locale } }: Props) {
   });
 
   const featuredProducts = removeEdgesAndNodes(data.site.featuredProducts);
-  const newestProducts = removeEdgesAndNodes(data.site.newestProducts);
+  // const newestProducts = removeEdgesAndNodes(data.site.newestProducts);
 
   return (
     <>
@@ -67,12 +67,12 @@ export default async function Home({ params: { locale } }: Props) {
           showCompare={false}
           title={t('Carousel.featuredProducts')}
         />
-        <ProductCardCarousel
+        {/* <ProductCardCarousel
           products={newestProducts}
           showCart={false}
           showCompare={false}
           title={t('Carousel.newestProducts')}
-        />
+        /> */}
       </div>
       
     </>

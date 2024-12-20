@@ -137,7 +137,7 @@ const Carousel = ({ className, title, pageSize = 4, products, ...props }: Props)
         </span>
       </div>
 
-      <div className="-mx-2 overflow-hidden px-8" ref={carouselRef}>
+      {/* <div className="-mx-2 overflow-hidden px-8" ref={carouselRef}>
         <div className="-mx-4 mb-16 mt-8 flex lg:mt-10">
           {groupedProducts.map((group, index) => (
             <div
@@ -155,7 +155,28 @@ const Carousel = ({ className, title, pageSize = 4, products, ...props }: Props)
             </div>
           ))}
         </div>
+      </div> */}
+
+      <div className="-mx-2 overflow-hidden px-8 bg-[#e7e6e6]" ref={carouselRef}>        
+  <div className="-mx-4 mb-16 mt-8 flex lg:mt-10">
+    {groupedProducts.map((group, index) => (
+      <div
+        aria-label={`${index + 1} of ${groupedProducts.length}`}
+        aria-roledescription="slide"
+        className={cn(
+          'grid min-w-0 shrink-0 grow-0 basis-full grid-cols-2 gap-6 px-4 md:grid-cols-4 lg:gap-8',
+          !slidesInView.includes(index) && 'invisible',
+        )}
+        id={`${id}-slide-${index + 1}`}
+        key={index}
+        role="group"
+      >
+        {group.map((item) => item)}
       </div>
+    ))}
+  </div>
+</div>
+
 
       <div
         aria-label="Slides"
