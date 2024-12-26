@@ -102,7 +102,7 @@ export default async function Product(props: Props) {
       <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8">
         <Gallery product={product} />
         <Details product={product} />
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 border p-4 w-1/2 justify-self-end">
           <Description product={product} />
           <Warranty product={product} />
           <Suspense fallback={t('loading')}>
