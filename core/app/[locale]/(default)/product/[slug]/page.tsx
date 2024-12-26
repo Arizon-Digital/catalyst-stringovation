@@ -106,7 +106,7 @@ export default async function Product(props: Props) {
           <Description product={product} />
           <Warranty product={product} />
           <Suspense fallback={t('loading')}>
-            <Reviews productId={product.entityId} />
+            {/* <Reviews productId={product.entityId} /> */}
           </Suspense>
         </div>
       </div>
