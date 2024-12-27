@@ -54,7 +54,10 @@ export const DetailsFragment = graphql(
     PricingFragment,
   ],
 );
-
+type Field = 'SKU' | 'Brand' | 'ProdType' | 'Instrument' | 'SubBrand' | 'Style' | 'Instrument';
+interface BrandFields {
+  [brand: string]: Field[];
+}
 interface Props {
   product: FragmentOf<typeof DetailsFragment>;
 }
@@ -65,9 +68,24 @@ export const Details = ({ product }: Props) => {
 
   const customFields = removeEdgesAndNodes(product.customFields);
 
+  const brandFields: BrandFields = {
+    'Thomastik-Infeld': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument'],
+    'Boveda': ['SKU', 'Brand', 'ProdType', 'Instrument'],
+    'Jargar': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument'],
+    'Magic Rosin': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument','Style'],
+    'Realist': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument'],
+    'Revelle': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument','Style'],
+  };
+
+  const getFieldsForBrand = (brand: string): Field[] => {
+    return brandFields[brand] || [];  //empty array if brand not found
+  };
+  
+  // const fieldsToRender = getFieldsForBrand(product.brand);
+
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
-
+    console.log(customFields);
   return (
     <div>
       {product.brand && (
@@ -143,10 +161,10 @@ export const Details = ({ product }: Props) => {
       )}
 
       <ProductForm data={product} />
-
       <div className="my-12">
         <h2 className="mb-4 text-xl font-bold md:text-2xl">{t('additionalDetails')}</h2>
         <div className="grid gap-3 sm:grid-cols-2">
+        
           {Boolean(product.sku) && (
             <div>
               <h3 className="font-semibold">{t('sku')}</h3>

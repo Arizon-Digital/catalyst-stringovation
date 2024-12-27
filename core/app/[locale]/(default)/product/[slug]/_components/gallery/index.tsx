@@ -17,6 +17,8 @@ export const Gallery = ({ product }: Props) => {
   // Pick the top-level default image
   const topLevelDefaultImg = images.find((image) => image.isDefault);
 
+  const videos = removeEdgesAndNodes(product.videos);
+
   // If product.defaultImage exists, and product.defaultImage.url is not equal to the url of the isDefault image in images,
   // mark the existing isDefault image to "isDefault = false" and append the correct default image to images
   if (product.defaultImage && topLevelDefaultImg?.url !== product.defaultImage.url) {
@@ -39,6 +41,7 @@ export const Gallery = ({ product }: Props) => {
         <ComponentsGallery
           defaultImageIndex={defaultImageIndex}
           images={images.map((image) => ({ src: image.url, altText: image.altText }))}
+          videos={videos}
         />
       </div>
     </div>
