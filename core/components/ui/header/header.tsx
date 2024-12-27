@@ -62,7 +62,7 @@ const Header = ({
             height={32}
             priority
             src={logo.src}
-            width={155}
+            width={220}
           />
         ) : (
           <span className="truncate text-2xl font-black">{logo}</span>

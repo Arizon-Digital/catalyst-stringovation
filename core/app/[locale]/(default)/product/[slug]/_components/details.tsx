@@ -76,7 +76,7 @@ export const Details = ({ product }: Props) => {
 
       <h1 className="mb-4 text-4xl font-black lg:text-5xl">{product.name}</h1>
 
-      <ReviewSummary data={product} />
+      {/* <ReviewSummary data={product} /> */}
 
       {product.prices && (
         <div className="my-6 text-2xl font-bold lg:text-3xl">
