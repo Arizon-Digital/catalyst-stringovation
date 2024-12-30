@@ -15,5 +15,13 @@ export const GalleryFragment = graphql(`
       altText
       url: urlTemplate(lossy: true)
     }
+      videos {
+      edges {
+        node {
+          title
+          url
+        }
+      }
+    }
   }
 `);

@@ -41,7 +41,7 @@ export const AddToCartButton = ({
 
   return (
     <Button
-      className={className}
+      className={`bg-[#e0af06] border-0 ${className}`}
       disabled={isProductDisabled}
       loading={loading}
       loadingText={t('processing')}
