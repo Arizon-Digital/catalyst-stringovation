@@ -41,7 +41,7 @@ export const AddToCartButton = ({
 
   return (
     <Button
-      className={`bg-[#e0af06] border-0 ${className}`}
+      className={`bg-[#07265e] border-[#07265e] hover:border-[#e0af06] hover:bg-[#e0af06] w-1/2 ${className}`}
       disabled={isProductDisabled}
       loading={loading}
       loadingText={t('processing')}

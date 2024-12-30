@@ -54,7 +54,7 @@ export const DetailsFragment = graphql(
     PricingFragment,
   ],
 );
-type Field = 'SKU' | 'Brand' | 'ProdType' | 'Instrument' | 'SubBrand' | 'Style' | 'Instrument';
+type Field = 'SKU' | 'Brands' | 'ProdType' | 'Instrument' | 'SubBrand' | 'Style' | 'Instrument';
 interface BrandFields {
   [brand: string]: Field[];
 }
@@ -69,23 +69,25 @@ export const Details = ({ product }: Props) => {
   const customFields = removeEdgesAndNodes(product.customFields);
 
   const brandFields: BrandFields = {
-    'Thomastik-Infeld': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument'],
-    'Boveda': ['SKU', 'Brand', 'ProdType', 'Instrument'],
-    'Jargar': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument'],
-    'Magic Rosin': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument','Style'],
-    'Realist': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument'],
-    'Revelle': ['SKU', 'Brand', 'SubBrand', 'ProdType','Instrument','Style'],
+    'Thomastik-Infeld': ['SKU', 'Brands', 'SubBrand', 'ProdType', 'Instrument'],
+    Boveda: ['SKU', 'Brands', 'ProdType', 'Instrument'],
+    Jargar: ['SKU', 'Brands', 'SubBrand', 'ProdType', 'Instrument'],
+    'Magic Rosin': ['SKU', 'Brands', 'SubBrand', 'ProdType', 'Instrument', 'Style'],
+    Realist: ['SKU', 'Brands', 'SubBrand', 'ProdType', 'Instrument'],
+    Revelle: ['SKU', 'Brands', 'SubBrand', 'ProdType', 'Instrument', 'Style'],
   };
 
   const getFieldsForBrand = (brand: string): Field[] => {
-    return brandFields[brand] || [];  //empty array if brand not found
+    return brandFields[brand] || []; //empty array if brand not found
   };
-  
-  // const fieldsToRender = getFieldsForBrand(product.brand);
+
+  const brand = customFields.find((each) => each.name === 'Brands')?.value ?? 'null';
+  const fieldsToRender = getFieldsForBrand(brand);
+  // //console.log(brand);
 
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
-    console.log(customFields);
+  console.log(customFields);
   return (
     <div>
       {product.brand && (
@@ -164,44 +166,46 @@ export const Details = ({ product }: Props) => {
       <div className="my-12">
         <h2 className="mb-4 text-xl font-bold md:text-2xl">{t('additionalDetails')}</h2>
         <div className="grid gap-3 sm:grid-cols-2">
-        
-          {Boolean(product.sku) && (
+          {fieldsToRender.includes('SKU') && Boolean(product.sku) && (
             <div>
               <h3 className="font-semibold">{t('sku')}</h3>
               <p>{product.sku}</p>
             </div>
           )}
-          {Boolean(product.upc) && (
+          {fieldsToRender.includes('UPC' as Field) && Boolean(product.upc) && (
             <div>
               <h3 className="font-semibold">{t('upc')}</h3>
               <p>{product.upc}</p>
             </div>
           )}
-          {Boolean(product.minPurchaseQuantity) && (
-            <div>
-              <h3 className="font-semibold">{t('minPurchase')}</h3>
-              <p>{product.minPurchaseQuantity}</p>
-            </div>
-          )}
-          {Boolean(product.maxPurchaseQuantity) && (
-            <div>
-              <h3 className="font-semibold">{t('maxPurchase')}</h3>
-              <p>{product.maxPurchaseQuantity}</p>
-            </div>
-          )}
-          {Boolean(product.availabilityV2.description) && (
-            <div>
-              <h3 className="font-semibold">{t('availability')}</h3>
-              <p>{product.availabilityV2.description}</p>
-            </div>
-          )}
-          {Boolean(product.condition) && (
+          {fieldsToRender.includes('minPurchaseQuantity' as Field) &&
+            Boolean(product.minPurchaseQuantity) && (
+              <div>
+                <h3 className="font-semibold">{t('minPurchase')}</h3>
+                <p>{product.minPurchaseQuantity}</p>
+              </div>
+            )}
+          {fieldsToRender.includes('maxPurchaseQuantity' as Field) &&
+            Boolean(product.maxPurchaseQuantity) && (
+              <div>
+                <h3 className="font-semibold">{t('maxPurchase')}</h3>
+                <p>{product.maxPurchaseQuantity}</p>
+              </div>
+            )}
+          {fieldsToRender.includes('availabilityV2' as Field) &&
+            Boolean(product.availabilityV2.description) && (
+              <div>
+                <h3 className="font-semibold">{t('availability')}</h3>
+                <p>{product.availabilityV2.description}</p>
+              </div>
+            )}
+          {fieldsToRender.includes('Condition' as Field) && Boolean(product.condition) && (
             <div>
               <h3 className="font-semibold">{t('condition')}</h3>
               <p>{product.condition}</p>
             </div>
           )}
-          {Boolean(product.weight) && (
+          {fieldsToRender.includes('Weight' as Field) && Boolean(product.weight) && (
             <div>
               <h3 className="font-semibold">{t('weight')}</h3>
               <p>
@@ -209,18 +213,59 @@ export const Details = ({ product }: Props) => {
               </p>
             </div>
           )}
-          {Boolean(customFields) &&
-            customFields.map((customField) => {
-              let customFieldName = customField.name;
-              if(customFieldName == 'ProdType') {
-                customFieldName = 'Product Type';
-              }
-             return (
-              <div key={customField.entityId}>
-                <h3 className="font-semibold">{customFieldName}</h3>
-                <p>{customField.value}</p>
-              </div>
-            )})}
+          {/* {Boolean(customFields) &&
+            customFields
+              .filter((customField) => fieldsToRender.includes(customField.name as Field))
+              .map((customField) => {
+                let customFieldName = customField.name;
+                if (customFieldName === 'ProdType') {
+                  customFieldName = 'Product Type'; 
+                }
+                return (
+                  <div key={customField.entityId}>
+                    <h3 className="font-semibold">{customFieldName}</h3>
+                    <p>{customField.value}</p>
+                  </div>
+                );
+              })} */}
+
+          {Boolean(customFields) && (
+            <>
+              {customFields.some((cf) => cf.name === 'Instrument') && (
+                <div key="instrument">
+                  <h3 className="font-semibold">Instrument</h3>
+                  <p>
+                    {customFields
+                      .filter((cf) => cf.name === 'Instrument') 
+                      .map((cf) => cf.value)
+                      .join(', ')}
+                  </p>
+                </div>
+              )}
+
+              {customFields
+                .filter((customField) => fieldsToRender.includes(customField.name as Field)) 
+                .map((customField) => {
+                  let customFieldName = customField.name;
+                  if (customFieldName === 'ProdType') {
+                    customFieldName = 'Product Type';
+                  }
+                  if(customFieldName === 'SubBrand'){
+                    customFieldName = 'Sub Brand';
+                  }
+
+                  if (customFieldName !== 'Instrument') {
+                    return (
+                      <div key={customField.entityId}>
+                        <h3 className="font-semibold">{customFieldName}</h3>
+                        <p>{customField.value}</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+            </>
+          )}
         </div>
       </div>
       <ProductSchema product={product} />

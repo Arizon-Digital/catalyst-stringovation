@@ -159,12 +159,12 @@ export const ProductForm = ({ data: product }: Props) => {
           <Submit data={product} />
 
           {/* NOT IMPLEMENTED YET */}
-          <div className="w-full">
+          {/* <div className="w-full">
             <Button disabled type="submit" variant="secondary">
               <Heart aria-hidden="true" className="mr-2" />
               <span>{t('saveToWishlist')}</span>
             </Button>
-          </div>
+          </div> */}
         </div>
       </form>
     </FormProvider>
