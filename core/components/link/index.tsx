@@ -48,11 +48,11 @@ export const Link = forwardRef<ElementRef<'a'>, Props>(
       router.prefetch(String(href), { kind: prefetchKind });
       setPrefetched();
     };
-
+    
     return (
       <NavLink
         className={cn(
-          'hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
+          'hover:text-[#e0af06] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
           className,
         )}
         href={href}

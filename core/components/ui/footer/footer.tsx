@@ -51,7 +51,7 @@ const Footer = ({
   socialMediaLinks,
   ...props
 }: Props) => (
-  <footer className={cn('2xl:container 2xl:mx-auto bg-[#e5e5e5]', className)} {...props}>
+  <footer className={cn('2xl:container 2xl:mx-auto bg-[#ebebeb]', className)} {...props}>
     <section className="flex flex-col gap-8 border-t border-gray-200 px-4 py-2 sm:px-10 md:flex-row lg:gap-4 lg:px-12 2xl:px-6">
       <nav className="grid flex-auto auto-cols-fr gap-8 sm:grid-flow-col">
         {sections.map((section) => (
