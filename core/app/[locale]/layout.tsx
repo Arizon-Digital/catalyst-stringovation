@@ -110,6 +110,7 @@ export default async function RootLayout({ params, children }: Props) {
           </NextIntlClientProvider>
         </MakeswiftProvider>
         <VercelComponents />
+        <script type="text/javascript" src="https://static.affiliatly.com/bigcommerce/v3/bigcommerce.js?affiliatly_code=AF-1070207" ></script>
       </body>
     </html>
   );

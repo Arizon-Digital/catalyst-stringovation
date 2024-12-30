@@ -74,7 +74,7 @@ const Header = ({
           {links.map((link) =>
             link.groups && link.groups.length > 0 ? (
               <NavigationMenuPrimitive.Item key={link.href}>
-                <NavigationMenuPrimitive.Trigger className="group/button flex items-center font-semibold hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20">
+                <NavigationMenuPrimitive.Trigger className="group/button flex items-center font-semibold hover:text-[#e0af06] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20">
                   <CustomLink className="p-3 font-semibold" href={link.href}>
                     {link.label}
                   </CustomLink>
