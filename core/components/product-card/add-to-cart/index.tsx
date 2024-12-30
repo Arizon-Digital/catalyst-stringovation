@@ -20,7 +20,7 @@ export const AddToCart = ({ data: product }: Props) => {
 
   return Array.isArray(productOptions) && productOptions.length > 0 ? (
     <Button asChild>
-      <Link className="mt-2 hover:text-white" href={product.path}>
+      <Link className="mt-2 hover:text-white bg-[#07265e] border-[#07265e] hover:border-[#e0af06] hover:bg-[#e0af06]" href={product.path}>
         {t('viewOptions')}
       </Link>
     </Button>
