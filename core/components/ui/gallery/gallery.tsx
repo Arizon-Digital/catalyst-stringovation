@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Image } from '~/components/image';
+import { BcImage } from '~/components/bc-image';
 import { cn } from '~/lib/utils';
 
 interface Image {
@@ -38,6 +38,7 @@ const getYoutubeThumbnailUrl = (url: string) => {
 
 
 const Gallery = ({ className, images, videos, defaultImageIndex = 0 }: Props) => {
+  const t = useTranslations("Product.Gallery");
   const [selectedImageIndex, setSelectedImageIndex] = useState(defaultImageIndex);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoError, setVideoError] = useState<string | null>(null);
