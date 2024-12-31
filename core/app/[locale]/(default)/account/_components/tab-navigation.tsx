@@ -23,7 +23,7 @@ export const TabNavigation = () => {
 
   return (
     <nav aria-label={t('accountTabsLabel')}>
-      <ul className="mb-8 flex items-start overflow-x-auto">
+      {/* <ul className="mb-8 flex items-start overflow-x-auto">
         {tabList.map((tab) => (
           <li key={tab}>
             <Link
@@ -38,7 +38,7 @@ export const TabNavigation = () => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </nav>
   );
 };
