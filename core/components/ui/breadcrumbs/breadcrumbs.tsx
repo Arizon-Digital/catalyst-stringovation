@@ -27,7 +27,7 @@ const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
                 <CustomLink
                   aria-current={isLast ? `page` : undefined}
                   className={cn(
-                    'font-semibold hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
+                    'font-semibold hover:text-[#e0af06] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
                     isLast && 'font-extrabold',
                   )}
                   href={href}
