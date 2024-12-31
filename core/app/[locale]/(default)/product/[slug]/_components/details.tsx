@@ -83,11 +83,8 @@ export const Details = ({ product }: Props) => {
 
   const brand = customFields.find((each) => each.name === 'Brands')?.value ?? 'null';
   const fieldsToRender = getFieldsForBrand(brand);
-  // //console.log(brand);
 
-  const showPriceRange =
-    product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
-  console.log(customFields);
+  const showPriceRange = product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
   return (
     <div>
       {product.brand && (

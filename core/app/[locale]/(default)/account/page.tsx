@@ -4,8 +4,11 @@ import { getTranslations } from 'next-intl/server';
 import { ReactNode } from 'react';
 
 import { Link } from '~/components/link';
+import Image from 'next/image';
 
-import { AccountNotification } from './(tabs)/_components/account-notification';
+import { AccountNotification } from './_components/account-notification';
+import { WelcomeMessage } from './welcome-message';
+import ordersIcon from "~/public/accountIcons/orders.svg"
 
 interface AccountItem {
   children: ReactNode;
@@ -45,8 +48,11 @@ export default function Account() {
       <h1 className="my-8 text-4xl font-black lg:my-8 lg:text-5xl">{t('heading')}</h1>
 
       <AccountNotification message={t('successMessage')} />
-
+      <WelcomeMessage />
       <div className="mb-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <AccountItem href="/account/orders" title="Orders">
+          <Image src={ordersIcon} alt="Orders" width={70} height={70} />
+        </AccountItem>
         <AccountItem href="/account/addresses" title={t('addresses')}>
           <BookUser className="me-8" size={48} strokeWidth={1.5} />
         </AccountItem>

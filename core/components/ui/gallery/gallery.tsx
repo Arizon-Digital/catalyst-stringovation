@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 import { BcImage } from '~/components/bc-image';
 import { cn } from '~/lib/utils';
 
@@ -38,6 +38,7 @@ const getYoutubeThumbnailUrl = (url: string) => {
 
 
 const Gallery = ({ className, images, videos, defaultImageIndex = 0 }: Props) => {
+  const t = useTranslations("Product.Gallery");
   const [selectedImageIndex, setSelectedImageIndex] = useState(defaultImageIndex);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoError, setVideoError] = useState<string | null>(null);
@@ -211,7 +212,7 @@ const Gallery = ({ className, images, videos, defaultImageIndex = 0 }: Props) =>
         {mediaItems.length > 1 && (
           <div className="absolute top-1/2 flex w-full -translate-y-1/2 justify-between px-5 sm:px-0">
             <button
-              aria-label="Previous product image"
+              aria-label={t('previous')}
               className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
               onClick={() =>
                 setSelectedImageIndex((prev) => {
@@ -226,7 +227,7 @@ const Gallery = ({ className, images, videos, defaultImageIndex = 0 }: Props) =>
               <ChevronLeft />
             </button>
             <button
-              aria-label="Next product image"
+              aria-label={t('next')}
               className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
               onClick={() =>
                 setSelectedImageIndex((prev) => {
@@ -244,7 +245,7 @@ const Gallery = ({ className, images, videos, defaultImageIndex = 0 }: Props) =>
         )}
       </figure>
       <nav
-        aria-label="Thumbnail navigation"
+        aria-label={t('thumbnailNavigation')}
         className="mt-3 flex w-full flex-wrap items-center gap-4 px-6 py-1 sm:px-1 md:mt-5 md:gap-6"
       >
         {mediaItems.map((item, index) => {

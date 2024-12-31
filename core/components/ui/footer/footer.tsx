@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Fragment, ReactNode } from 'react';
 
 import { BcImage } from '~/components/bc-image';
@@ -128,7 +129,7 @@ const Footer = ({
       </div>
     </section>
 
-    <section className="hidden justify-between gap-2 border-t border-gray-200 px-4 py-2 sm:px-10 lg:flex lg:px-12 2xl:px-2">
+    <section className="hidden justify-between gap-8 border-t border-gray-200 px-4 py-6 sm:px-10 lg:flex lg:px-12 2xl:px-0">
       <p className="text-gray-500 sm:order-first">{copyright}</p>
       <div className="flex gap-8">
         <Locale />
