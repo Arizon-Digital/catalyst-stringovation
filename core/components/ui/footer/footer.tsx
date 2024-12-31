@@ -1,6 +1,7 @@
+import { useTranslations } from 'next-intl';
 import { Fragment, ReactNode } from 'react';
 
-import { BcImage } from '~/components/bc-image';
+import { Image } from '~/components/image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
 
@@ -132,11 +133,23 @@ const Footer = ({
       <p className="text-gray-500 sm:order-first">{copyright}</p>
       <div className="flex gap-8">
         <Locale />
-        <div className="flex gap-6">{paymentIcons}</div>
-      </div>
-    </section>
-  </footer>
-);
+
+        <div className="flex w-full flex-col justify-between gap-10 sm:flex-row sm:gap-8">
+          <div className="flex gap-6">{paymentIcons}</div>
+          <p className="text-gray-500 sm:order-first">{copyright}</p>
+        </div>
+      </section>
+
+      <section className="hidden justify-between gap-8 border-t border-gray-200 px-4 py-6 sm:px-10 lg:flex lg:px-12 2xl:px-0">
+        <p className="text-gray-500 sm:order-first">{copyright}</p>
+        <div className="flex gap-8">
+          <Locale />
+          <div className="flex gap-6">{paymentIcons}</div>
+        </div>
+      </section>
+    </footer>
+  );
+};
 
 Footer.displayName = 'Footer';
 

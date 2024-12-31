@@ -17,7 +17,8 @@ import {
 } from '~/components/ui/form';
 import { Message } from '~/components/ui/message';
 
-import { useAccountStatusContext } from '../../../account/(tabs)/_components/account-status-provider';
+import { useAccountStatusContext } from '../../../account/_components/account-status-provider';
+import { SubmitMessagesList } from '../../../account/_components/submit-messages-list';
 import { login } from '../_actions/login';
 
 const SubmitButton = () => {
@@ -66,7 +67,7 @@ export const LoginForm = () => {
     <>
       {accountState.status === 'success' && (
         <Message className="col-span-full mb-8 w-full text-gray-500" variant={accountState.status}>
-          <p>{accountState.message}</p>
+          <SubmitMessagesList messages={accountState.messages} />
         </Message>
       )}
 
