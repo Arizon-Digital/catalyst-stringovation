@@ -270,7 +270,7 @@ export default async function Compare(props: Props) {
                 if (product.productOptions.length) {
                   return (
                     <td className="border-b px-4 pb-12" key={product.entityId}>
-                      <Button aria-label={product.name} asChild className="hover:text-white">
+                      <Button aria-label={product.name} asChild className="hover:text-white bg-[#07265e] border-[#07265e] hover:border-[#e0af06] hover:bg-[#e0af06]">
                         <Link href={product.path}>{t('Table.viewOptions')}</Link>
                       </Button>
                     </td>
@@ -301,7 +301,7 @@ export default async function Compare(props: Props) {
                 />
               ))}
             </tr>
-            <tr className="absolute mt-6">
+            {/* <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-rating">
                 {t('Table.rating')}
               </th>
@@ -330,7 +330,7 @@ export default async function Compare(props: Props) {
                   </p>
                 </td>
               ))}
-            </tr>
+            </tr> */}
             <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-availability">
                 {t('Table.availability')}
@@ -352,7 +352,7 @@ export default async function Compare(props: Props) {
                 if (product.productOptions.length) {
                   return (
                     <td className="border-b px-4 pb-24 pt-12" key={product.entityId}>
-                      <Button aria-label={product.name} asChild className="hover:text-white">
+                      <Button aria-label={product.name} asChild className="hover:text-white bg-[#07265e] border-[#07265e] hover:border-[#e0af06] hover:bg-[#e0af06]">
                         <Link href={product.path}>{t('Table.viewOptions')}</Link>
                       </Button>
                     </td>

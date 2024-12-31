@@ -139,11 +139,11 @@ const Search = ({ initialTerm = '', logo, onSearch }: Props) => {
               </div>
               <Form.Root
                 action="/search"
-                className="col-span-4 flex lg:col-span-3"
+                className="col-span-4 flex justify-center lg:col-span-3"
                 method="get"
                 role="search"
               >
-                <Form.Field className="w-full" name="term">
+                <Form.Field className="w-full max-w-[450px]" name="term">
                   <Form.Control asChild required>
                     <Input
                       aria-controls="categories products brands"

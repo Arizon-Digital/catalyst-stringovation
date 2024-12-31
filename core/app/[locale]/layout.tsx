@@ -101,6 +101,7 @@ export default async function RootLayout({ params, children }: Props) {
     <html className={`${inter.variable} font-sans`} lang={locale}>
       <head>
         <DraftModeScript />
+        <script type="text/javascript" src="https://static.affiliatly.com/bigcommerce/v3/bigcommerce.js?affiliatly_code=AF-1070207" ></script>
       </head>
       <body className="flex h-screen min-w-[375px] flex-col">
         <Notifications />
@@ -110,7 +111,6 @@ export default async function RootLayout({ params, children }: Props) {
           </NextIntlClientProvider>
         </MakeswiftProvider>
         <VercelComponents />
-        <script type="text/javascript" src="https://static.affiliatly.com/bigcommerce/v3/bigcommerce.js?affiliatly_code=AF-1070207" ></script>
       </body>
     </html>
   );
